@@ -28,6 +28,24 @@ class App extends Component {
       });
   }
 
+  // POST Request to add a new smurf.
+
+  addSmurf = newSmurf => {
+    axios
+      .post("http://localhost:3333/smurfs", newSmurf)
+      .then(res => {
+        // console.log("printing res");
+        // console.log(res);
+        this.setState({
+          smurfs: res.data
+        });
+        this.props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div className="App">
@@ -39,7 +57,13 @@ class App extends Component {
         <Route
           exact
           path="/smurf-form"
-          render={props => <SmurfForm {...props} smurfs={this.state.smurfs} />}
+          render={props => (
+            <SmurfForm
+              {...props}
+              smurfs={this.state.smurfs}
+              addSmurf={this.addSmurf}
+            />
+          )}
         />
       </div>
     );
