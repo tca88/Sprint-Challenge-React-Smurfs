@@ -49,6 +49,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <nav className="main-nav">
+          <NavLink
+            exact
+            to="/"
+            className="nav-item"
+            activeClassName="nav-item-active"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/smurf-form"
+            className="nav-item"
+            activeClassName="nav-item-active"
+          >
+            Add a Smurf
+          </NavLink>
+        </nav>
         <Route
           exact
           path="/"
